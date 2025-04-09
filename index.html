@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <title>Random Words</title>
+  </head>
+  <body>
+    <div id="overlay" class="overlay">
+      <div class="loader"></div>
+      <div id="overlayMessage">Reading file...</div>
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="content__read">
+          <span>Reading word</span>
+          <input type="file" name="" id="selected-btn" accept=".txt" />
+          <input type="text" id="first-word" placeholder="first word" />
+          <input type="text" id="second-word" placeholder="second word" />
+          <button class="generate-btn" id="random-word">
+            click to find randome words!
+          </button>
+        </div>
+        <div class="content__write">
+          <span style="background-color: red">Writing word</span>
+          <textarea
+            id="new-words"
+            placeholder="Add new words, one per line..."
+          ></textarea>
+          <button id="add-words">click to add words!</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js.js"></script>
+</html>

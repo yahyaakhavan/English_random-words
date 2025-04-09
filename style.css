@@ -1,0 +1,155 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Add accessible line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  padding: 0.5rem;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+    10. Create a root stacking context
+  */
+#root,
+#__next {
+  isolation: isolate;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-top: 1rem;
+  border: 1px solid rebeccapurple;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.content__read {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.content__write {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+.content__read span,
+.content__write span {
+  border: 1px solid;
+  padding: 0.5rem;
+  color: white;
+  background-color: blue;
+  border-radius: 0.5rem;
+  display: inline;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+#selected-btn {
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+  z-index: 1000;
+  flex-direction: column;
+  text-align: center;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #4caf50;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
