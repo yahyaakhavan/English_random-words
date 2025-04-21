@@ -78,7 +78,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
 }
 .content {
   display: flex;
@@ -90,11 +90,15 @@ h6 {
   border: 1px solid rebeccapurple;
   border-radius: 0.5rem;
   padding: 1rem;
+  height: 100vh;
+  overflow-y: auto;
 }
 .content__read {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 .content__write {
   display: flex;
@@ -113,6 +117,31 @@ h6 {
   width: fit-content;
   display: flex;
   justify-content: center;
+}
+
+.container__wordOne,
+.container__wordTwo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+#first-word,
+#second-word {
+  flex: 1;
+}
+.content__review {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.content__review input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+.content__review span {
+  display: flex;
 }
 #selected-btn {
   margin-bottom: 1rem;

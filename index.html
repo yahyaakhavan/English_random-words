@@ -17,15 +17,42 @@
         <div class="content__read">
           <span>Reading word</span>
           <input type="file" name="" id="selected-btn" accept=".txt" />
-          <input type="text" id="first-word" placeholder="first word" />
-          <input type="text" id="second-word" placeholder="second word" />
+          <div class="container__wordOne">
+            <input
+              readonly
+              type="text"
+              id="first-word"
+              placeholder="first word"
+            />
+            <input type="checkbox" name="" id="addToReview1" />
+          </div>
+          <div class="container__wordTwo">
+            <input
+              readonly
+              type="text"
+              id="second-word"
+              placeholder="second word"
+            />
+            <input type="checkbox" name="" id="addToReview2" />
+          </div>
+
           <button class="generate-btn" id="random-word">
             click to find randome words!
           </button>
         </div>
+        <div class="content__review">
+          <span
+            ><input id="review__checkBox" type="checkbox" /><label
+              for="review__checkBox"
+              >Review Words</label
+            ></span
+          >
+          <textarea readonly name="" id="review"></textarea>
+        </div>
         <div class="content__write">
           <span style="background-color: red">Writing word</span>
           <textarea
+            readonly
             id="new-words"
             placeholder="Add new words, one per line..."
           ></textarea>

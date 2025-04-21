@@ -6,10 +6,27 @@ const secondWord = document.getElementById("second-word");
 const createRandomBtn = document.getElementById("random-word");
 const wordsInput = document.getElementById("new-words");
 const addWords = document.getElementById("add-words");
+const reviewCheckBox = document.getElementById("review__checkBox");
+const reviewTextarea = document.getElementById("review");
+const addCheckBox1 = document.getElementById("addToReview1");
+const addCheckBox2 = document.getElementById("addToReview2");
 let words = [];
 let timerID;
 const waitingTimer = 1500;
-
+addCheckBox1.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    addWordToReviewList(firstWord.value);
+  } else {
+    removeWordFromReviewList(firstWord.value);
+  }
+});
+addCheckBox2.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    addWordToReviewList(firstWord.value);
+  } else {
+    removeWordFromReviewList(firstWord.value);
+  }
+});
 createRandomBtn.addEventListener("click", (e) => {
   createRandomWord();
 });
@@ -20,7 +37,41 @@ addWords.addEventListener("click", () => {
 fileInput.addEventListener("change", (e) => {
   wordsToArray(e.target.files[0]);
 });
-
+reviewCheckBox.addEventListener("change", (e) => {
+  if (e.target.checked) {
+    getReviewWords(words);
+  } else {
+    reviewTextarea.value = "";
+  }
+});
+function addWordToReviewList(word) {
+  const index = words.findIndex((item) => {
+    return item === word;
+  });
+  words[index] += " .";
+}
+function removeWordFromReviewList(word) {
+  const index = words.findIndex((item) => {
+    return item === word;
+  });
+  words[index] = word.split(".")[0];
+}
+function getReviewWords(words) {
+  let reviewWordsList = [];
+  if (words.length === 0) {
+    showOverlay("first select the file");
+    setTimeout(hideOverlay, 3000);
+    return;
+  }
+  words.map((word) => {
+    if (word.includes(".")) {
+      reviewWordsList.push(word.split(".")[0]);
+    }
+  });
+  reviewWordsList.map((item) => {
+    reviewTextarea.value += `${item} \n`;
+  });
+}
 function wordsToArray(files) {
   if (!files) {
     showOverlay("No file selected.");
@@ -59,9 +110,14 @@ function createRandomWord() {
   for (let i = 2; i > 0; i--) {
     randomNumbers.push(Math.floor(Math.random(words.length) * words.length));
   }
-  firstWord.value = words[randomNumbers[0]];
+  if (words[randomNumbers[0]].includes(".")) {
+    addCheckBox1.checked = true;
+  } else {
+    addCheckBox1.checked = false;
+  }
+  firstWord.value = words[randomNumbers[0]].split(".")[0];
 
-  secondWord.value = words[randomNumbers[1]];
+  secondWord.value = words[randomNumbers[1]].split(".")[0];
 }
 function addNewWords() {
   clearTimeout(timerID);
