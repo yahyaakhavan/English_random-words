@@ -22,9 +22,9 @@ addCheckBox1.addEventListener("change", (e) => {
 });
 addCheckBox2.addEventListener("change", (e) => {
   if (e.target.checked) {
-    addWordToReviewList(firstWord.value);
+    addWordToReviewList(secondWord.value);
   } else {
-    removeWordFromReviewList(firstWord.value);
+    removeWordFromReviewList(secondWord.value);
   }
 });
 createRandomBtn.addEventListener("click", (e) => {
@@ -46,15 +46,20 @@ reviewCheckBox.addEventListener("change", (e) => {
 });
 function addWordToReviewList(word) {
   const index = words.findIndex((item) => {
-    return item === word;
+    return item.trim() === word.trim();
   });
-  words[index] += " .";
+  words[index] = `${words[index]} .`;
 }
 function removeWordFromReviewList(word) {
+  const n = `${word.trim()} .`;
+  console.log(word);
   const index = words.findIndex((item) => {
-    return item === word;
+    console.log(item, n);
+    return item.trim() === n.trim();
   });
-  words[index] = word.split(".")[0];
+  const mustBeCleared = word.split(".");
+  words[index] = mustBeCleared[0].trim();
+  console.log(words, mustBeCleared);
 }
 function getReviewWords(words) {
   let reviewWordsList = [];
@@ -114,6 +119,16 @@ function createRandomWord() {
     addCheckBox1.checked = true;
   } else {
     addCheckBox1.checked = false;
+  }
+  if (words[randomNumbers[1]].includes(".")) {
+    addCheckBox2.checked = true;
+  } else {
+    addCheckBox2.checked = false;
+  }
+  if (words[randomNumbers[0]] === words[randomNumbers[1]]) {
+    addCheckBox2.disabled = true;
+  } else {
+    addCheckBox2.disabled = false;
   }
   firstWord.value = words[randomNumbers[0]].split(".")[0];
 
