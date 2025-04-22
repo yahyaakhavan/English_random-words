@@ -52,14 +52,12 @@ function addWordToReviewList(word) {
 }
 function removeWordFromReviewList(word) {
   const n = `${word.trim()} .`;
-  console.log(word);
+
   const index = words.findIndex((item) => {
-    console.log(item, n);
     return item.trim() === n.trim();
   });
   const mustBeCleared = word.split(".");
   words[index] = mustBeCleared[0].trim();
-  console.log(words, mustBeCleared);
 }
 function getReviewWords(words) {
   let reviewWordsList = [];
